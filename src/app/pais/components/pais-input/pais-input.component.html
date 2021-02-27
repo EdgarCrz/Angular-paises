@@ -1,0 +1,12 @@
+<!-- creé un formulario con una propiedad ngSubmit la cual solo esta escuchando el momento en el cual se haga el input o el envio para ejecutar la funcion "buscar()" -->
+<!--este input/entrada es de tipo texto y lo asociamos al por-pais.component poniendole ese nombre -->
+<form (ngSubmit)="buscar()" autocomplete="off">
+  <input
+    type="text"
+    name="termino"
+    class="form-control"
+    [(ngModel)]="termino"
+    (input)="teclaPresionada()"
+    [placeholder]="placeholder"
+  />
+</form>

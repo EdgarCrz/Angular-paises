@@ -1,0 +1,20 @@
+<h2>Busquedas</h2>
+<hr />
+<ul class="list-group">
+  <!-- routerLink es una propiedad del metodo RouterModule que sirve tal cual como dice Link con la diferencia de que este no refresca toda la pantalla evitando que se pierda la posible data que ya esta cargada -->
+  <!-- routerLinkActivate activara la clase "activate" si y solo si me encuentro en ese URL -->
+  <li
+    class="list-group-item"
+    routerLink=""
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    Buscar país
+  </li>
+  <li class="list-group-item" routerLink="region" routerLinkActive="active">
+    Por región
+  </li>
+  <li class="list-group-item" routerLink="capital" routerLinkActive="active">
+    Por capital
+  </li>
+</ul>

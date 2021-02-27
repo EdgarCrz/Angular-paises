@@ -1,0 +1,43 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+  <h3>
+    Buscar por region <small>{{ regionActiva | titlecase }}</small>
+  </h3>
+  <hr />
+
+  <h5>Seleccione la region</h5>
+
+  <div class="row">
+    <div class="col">
+      <!-- el boton se repetira el total de valores que tenga el arreglo -->
+      <!-- al hacer click llamara al metodo "activarRegion" y le pasara la variable de region -->
+
+      <!-- [class.btn-primary]="region === regionActiva" -->
+      <!-- este era mas eficiente que el anterior
+    [ngClass]="{
+        'btn-primary': regionActiva === region,
+        'btn-outline-primary': regionActiva !== region
+      }" -->
+
+      <!-- pregunto :"region" es estrictamente igual a la "regionActiva" ? si si asignale la clase  'btn btn-primary' si no 'btn btn-outline-primary'  -->
+      <!--  [class]="
+        region === regionActiva ? 'btn btn-primary' : 'btn btn-outline-primary'
+      " -->
+      <button
+        *ngFor="let region of regiones"
+        [class]="getClaseCss(region)"
+        (click)="activarRegion(region)"
+      >
+        {{ region | titlecase }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- si en el arreglo aunque sea hay 1 valor entonces se mostrará la tabla -->
+<div *ngIf="paises.length > 0" class="row">
+  <div class="col">
+    <!-- [paises] viene de pais-tabla.component y "paises" viene de por-pais.component.hmtl  -->
+    <!-- esta tabla esta en otro componente y ahi esta toda la informacion con la cual se va a llenar -->
+    <app-pais-tabla [paises]="paises"></app-pais-tabla>
+  </div>
+</div>

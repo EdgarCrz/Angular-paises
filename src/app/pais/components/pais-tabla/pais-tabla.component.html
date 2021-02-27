@@ -1,0 +1,27 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Bandera:</th>
+      <th>Nombre</th>
+      <th>Poblacion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let pais of paises; let i = index"
+      class="animate__animated animate__fadeIn"
+    >
+      <td>{{ i + 1 }}</td>
+      <td>
+        <img class="small-flags" [src]="pais.flag" />
+      </td>
+      <td class="">{{ pais.capital }} ,{{ pais.name }}</td>
+      <td>{{ pais.population | number }} Habitantes</td>
+      <td>
+        <!-- cuando clickeé aqui me va a redirijir a el link /pais/y su codigo Y A LA PAGINA VER-PAIS-WORKS -->
+        <a [routerLink]="['/pais', pais.alpha2Code]">Ver mas...</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

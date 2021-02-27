@@ -1,0 +1,46 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+  <h2>Por país</h2>
+  <hr />
+  <!--Creé un div con la clase row-fila-->
+  <div class="row">
+    <!--dentro creé otro div clas columna?-->
+    <div class="col">
+      <app-pais-input
+        (onEnter)="buscar($event)"
+        (onDebounce)="sugerencias($event)"
+        placeholder="Buscar pais..."
+      ></app-pais-input>
+    </div>
+  </div>
+
+  <ul *ngIf="mostrarSugerencias" class="list-group">
+    <li
+      *ngFor="let pais of paisesSugeridos"
+      class="list-group-item list-group-item-action"
+    >
+      <a class="nav-link" [routerLink]="['/pais', pais.alpha2Code]">
+        {{ pais.name }}</a
+      >
+    </li>
+    <li
+      class="list-group-item list-group-item-action"
+      (click)="buscarSugerido(termino)"
+    >
+      <a class="nav-link"> Buscar "{{ termino }}" </a>
+    </li>
+  </ul>
+  <hr />
+</div>
+<!-- Las directivas *ngIf y *ngFor son atributos que podemos agregarle a los elementos HTML que nos permiten en el caso del *ngIf condicionar si dicha marca debe agregarse a la página HTML/ condicionado hacia el condigo ts -->
+<!-- ngIf por defauld recibe valores boleandos si hayError viene con true/ si hay error es verdadero entonces manda el mensaje -->
+<div *ngIf="hayError" class="alert alert-danger">
+  No se encontro ninguna coincidencia con {{ termino }}
+</div>
+
+<!-- si en el arreglo aunque sea hay 1 valor entonces se mostrará la tabla -->
+<div *ngIf="paises.length > 0" class="row">
+  <div class="col">
+    <!-- [paises] viene de pais-tabla.component y "paises" viene de por-pais.component.hmtl  -->
+    <app-pais-tabla [paises]="paises"></app-pais-tabla>
+  </div>
+</div>
